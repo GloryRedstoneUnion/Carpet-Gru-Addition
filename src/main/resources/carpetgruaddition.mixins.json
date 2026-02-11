@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.gru.carpet.carpetgruaddition.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "FireworkRocketEntityMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

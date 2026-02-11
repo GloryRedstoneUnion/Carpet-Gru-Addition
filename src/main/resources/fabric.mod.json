@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "carpetgruaddition",
+  "version": "${version}",
+  "name": "Carpet-Gru-Addition",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "Apache-2.0",
+  "icon": "assets/carpetgruaddition/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "org.gru.carpet.carpetgruaddition.client.CarpetgruadditionClient"
+    ],
+    "main": [
+      "org.gru.carpet.carpetgruaddition.Carpetgruaddition"
+    ]
+  },
+  "mixins": [
+    "carpetgruaddition.mixins.json",
+    {
+      "config": "carpetgruaddition.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.3",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}",
+    "carpet": "*"
+  }
+}
