@@ -1,0 +1,53 @@
+name: Build and Release
+
+on:
+  push:
+    branches: [ "master", "main" ]
+  pull_request:
+    branches: [ "master", "main" ]
+  release:
+    types: [ published ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        submodules: true
+
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'adopt'
+
+    - name: Build with Gradle
+      run: ./gradlew build --no-daemon
+
+    - name: Upload built jar
+      uses: actions/upload-artifact@v4
+      with:
+        name: carpet-gru-addition
+        path: build/libs/*.jar
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && github.event.action == 'published'
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Download built jar
+      uses: actions/download-artifact@v4
+      with:
+        name: carpet-gru-addition
+        path: build/libs
+
+    - name: Upload release assets
+      uses: softprops/action-gh-release@v2
+      with:
+        files: build/libs/*.jar
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
