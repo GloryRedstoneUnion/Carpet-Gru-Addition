@@ -4,6 +4,10 @@ pluginManagement {
             name = 'Fabric'
             url = 'https://maven.fabricmc.net/'
         }
+        maven {
+            name = 'carpet'
+            url = 'https://masa.dy.fi/maven'
+        }
         gradlePluginPortal()
     }
 }
