@@ -1,6 +1,6 @@
 package org.gru.carpet.carpetgruaddition.mixin;
 
-import org.gru.carpet.carpetgruaddition.loggers.FireworkTrajectoryLogger;
+import org.gru.carpet.carpetgruaddition.logging.loggers.FireworkTrajectoryLogger;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.projectile.FireworkRocketEntity;
